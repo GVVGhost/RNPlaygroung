@@ -11,9 +11,8 @@ module.exports = {
         allowUndefined: true,
         verbose: false,
         allowlist: [
-          'REACT_APP_API_URL',
-          'REACT_APP_CRYPTO_KEY',
-          'REACT_APP_STORAGE_KEY',
+          'API_URL',
+          'STORAGE_KEY',
         ],
       },
     ],
