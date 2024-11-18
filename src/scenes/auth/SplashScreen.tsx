@@ -18,7 +18,6 @@ const SplashScreen: React.FC<Props> = ({navigation}) => {
     setTimeout(() => {
       autoLogin();
     }, 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const autoLogin = () => {

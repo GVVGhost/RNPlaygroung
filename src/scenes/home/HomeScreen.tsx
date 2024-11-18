@@ -9,12 +9,12 @@ import {TaskContainerObj} from '@utils/data/TaskTypes.ts';
 import {readOne, SK} from '@utils/storage/mmkvStorage.ts';
 import RoundedIconButton from '@components/buttons/RoundedIconButton.tsx';
 import uuid from 'react-native-uuid';
-import {ALERT_TYPE, Toast} from 'react-native-alert-notification';
 import moment from 'moment';
 import {useTaskContainerStore} from '@utils/zustand/TaskContainerStates.ts';
 import {getManyTasks} from '@api/requests/taskHelper.ts';
 import {useTheme} from '@react-navigation/native';
-import {toastShow} from '@utils/notifications/Toast.ts';
+import Toast from 'react-native-root-toast';
+import {toastErrorOptions} from '@utils/notifications/Toast.ts';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'HomeScreen'>;
 
@@ -31,12 +31,13 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
     const name = readOne(SK.name);
     const id = readOne(SK.id);
     if (!name || !id) {
-      Toast.show({
-        type: ALERT_TYPE.DANGER,
-        title: 'Some user data is missing. Try to re-login',
-      });
+      Toast.show(
+        'Some user data is missing. Try to re-login',
+        toastErrorOptions,
+      );
       return;
     }
+
     const data: TaskContainerObj = task || {
       uuid: uuid.v4().toString(),
       tasks: [],
@@ -52,7 +53,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
   const loadTaskContainers = () => {
     const userId = readOne(SK.id);
     if (!userId) {
-      toastShow('Local data is missed. Try re-login', ALERT_TYPE.DANGER);
+      Toast.show('Local data is missed. Try re-login', toastErrorOptions);
       return;
     }
     setRefresh(true);
@@ -91,7 +92,7 @@ const HomeScreen: React.FC<Props> = ({navigation}) => {
             onPress={() => navigateToTaskScreen(item)}
           />
         )}
-        contentContainerStyle={{gap: Indent.M, padding: Indent.M}}
+        contentContainerStyle={{gap: Indent.M, paddingHorizontal: Indent.L}}
         refreshControl={
           <RefreshControl
             colors={[colors.background]}

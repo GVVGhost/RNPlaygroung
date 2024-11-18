@@ -24,36 +24,3 @@ export const logOutDialog = (onLogOut: () => void, onStay?: () => void) => {
     onStay,
   );
 };
-//
-// export const updateAvailableDialog = (onUpdate: () => void, onCancel?: () => void) => {
-//     dialog(
-//         LS.alertTitleUpdateAvailable,
-//         LS.alertMessageUpdateAvailable,
-//         LS.alertButtonCancel,
-//         LS.alertButtonUpdate,
-//         onUpdate,
-//         onCancel
-//     );
-// };
-//
-// export const confirmSetUpCustomUrl = (onConfirm: () => void, onCancel?: () => void) => {
-//     dialog(
-//         LS.alertTitleConfirmUrlUpdate,
-//         LS.alertMessageConfirmUrlUpdate,
-//         LS.alertButtonCancel,
-//         LS.alertButtonConfirm,
-//         onConfirm,
-//         onCancel
-//     );
-// };
-//
-// export const confirmDeleteCustomUrl = (onConfirm: () => void, onCancel?: () => void) => {
-//     dialog(
-//         LS.alertTitleConfirmUrlDelete,
-//         LS.alertMessageConfirmUrlDelete,
-//         LS.alertButtonCancel,
-//         LS.alertButtonConfirm,
-//         onConfirm,
-//         onCancel
-//     );
-// };

@@ -1,5 +1,5 @@
 import {FC, ReactNode} from 'react';
-import {SafeAreaView, StatusBar, StyleProp, ViewStyle} from 'react-native';
+import {StatusBar, StyleProp, View, ViewStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {Indent} from '@theme/DimensionValues.ts';
 
@@ -11,7 +11,7 @@ type Props = {
 const RootScreenWrapper: FC<Props> = ({children, style}) => {
   const {colors} = useTheme();
   return (
-    <SafeAreaView
+    <View
       style={[
         {
           flex: 1,
@@ -22,7 +22,7 @@ const RootScreenWrapper: FC<Props> = ({children, style}) => {
       ]}>
       <StatusBar backgroundColor={colors?.primary} barStyle="light-content" />
       {children}
-    </SafeAreaView>
+    </View>
   );
 };
 

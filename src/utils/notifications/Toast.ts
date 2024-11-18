@@ -1,13 +1,22 @@
-import {ALERT_TYPE, Toast} from 'react-native-alert-notification';
-import {FontSize} from '@theme/DimensionValues.ts';
+import Toast, {ToastOptions} from 'react-native-root-toast';
+import {ToastColors} from '@theme/Colors.ts';
 
-export const toastShow = (
-  title: string,
-  type: ALERT_TYPE = ALERT_TYPE.INFO,
-) => {
-  Toast.show({
-    type: type,
-    title: title,
-    titleStyle: {fontSize: FontSize.M},
-  });
+export const toastInfoOptions: ToastOptions = {
+  backgroundColor: ToastColors.Info,
+  position: Toast.positions.BOTTOM,
+};
+
+export const toastSuccessOptions: ToastOptions = {
+  backgroundColor: ToastColors.Success,
+  position: Toast.positions.BOTTOM,
+};
+
+export const toastWarningOptions: ToastOptions = {
+  backgroundColor: ToastColors.Warning,
+  position: Toast.positions.BOTTOM,
+};
+
+export const toastErrorOptions: ToastOptions = {
+  backgroundColor: ToastColors.Error,
+  position: Toast.positions.BOTTOM,
 };

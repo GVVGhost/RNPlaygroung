@@ -104,10 +104,10 @@ npm install babel-plugin-module-resolver --save-dev
 ### Also, here is a command to install other commonly used dependencies:
 
 ```bash
-npm install @react-navigation/bottom-tabs @react-navigation/native @react-navigation/native-stack @react-navigation/stack axios moment react-native-alert-notification react-native-config react-native-gesture-handler react-native-localization react-native-mmkv react-native-progress react-native-uuid react-native-vector-icons react-native-version-info use-debounce zustand react-native-safe-area-context react-native-screens
+npm install @react-navigation/bottom-tabs @react-navigation/native @react-navigation/native-stack @react-navigation/stack axios moment react-native-config react-native-gesture-handler react-native-localization react-native-mmkv react-native-progress react-native-uuid react-native-vector-icons react-native-version-info use-debounce zustand react-native-safe-area-context react-native-screens react-native-root-toast react-native-alert-notification
 npm install @types/react-native-vector-icons metro-react-native-babel-preset --save-dev
 ```
-## Additional adjustments for `react-native-vector-icons` and  dependency
+## Additional adjustments for some dependencies
 ### For <b>IOS</b>
 
 #### In XCODE open the `Info.plist` file and add new row with key `Fonts provided by application`, then for the `Item 0` key add the `MaterialCommunityIcons.ttf` value.

@@ -1,7 +1,8 @@
 import axiosInstance from '@api/apiHelper.ts';
 import {HttpStatusCode} from 'axios';
-import {ALERT_TYPE, Toast} from 'react-native-alert-notification';
 import {AuthResObj} from '@utils/data/AuthTypes.ts';
+import Toast from 'react-native-root-toast';
+import {toastWarningOptions} from '@utils/notifications/Toast.ts';
 
 export const authenticate = async (
   url: '/login' | '/register',
@@ -23,8 +24,7 @@ export const authenticate = async (
     data,
   });
   if (res.status !== HttpStatusCode.Ok) {
-    const textBody = res.message || errorMap.get(res.status) || 'Login failed';
-    Toast.show({type: ALERT_TYPE.WARNING, textBody});
+    Toast.show(res.message || errorMap.get(res.status) || 'Login failed', toastWarningOptions);
     return null;
   }
   return res.data;

@@ -1,4 +1,3 @@
-import {IColors} from 'react-native-alert-notification/lib/typescript/service';
 import {Theme} from '@react-navigation/native';
 
 export const LightTheme: Theme = {
@@ -10,6 +9,12 @@ export const LightTheme: Theme = {
     text: '#4e3e37',
     border: '#a18a6d',
     notification: '#e63c3c',
+  },
+  fonts: {
+    regular: {fontFamily: 'normal', fontWeight: 'normal'},
+    medium: {fontFamily: 'normal', fontWeight: '500'},
+    bold: {fontFamily: 'normal', fontWeight: 'bold'},
+    heavy: {fontFamily: 'normal', fontWeight: 'bold'},
   },
 };
 
@@ -23,24 +28,17 @@ export const DarkTheme: Theme = {
     border: '#252322',
     notification: '#783c3c',
   },
+  fonts: {
+    regular: {fontFamily: 'normal', fontWeight: 'normal'},
+    medium: {fontFamily: 'normal', fontWeight: '500'},
+    bold: {fontFamily: 'normal', fontWeight: 'bold'},
+    heavy: {fontFamily: 'normal', fontWeight: 'bold'},
+  },
 };
 
-export const nLight: IColors = {
-  card: '#f0f0f0',
-  info: '#155E92',
-  label: '#69646e',
-  danger: '#e63c3c',
-  overlay: 'rgba(161,161,161,0.2)',
-  warning: '#c4bf21',
-  success: '#28ba00',
-};
-
-export const nDark: IColors = {
-  card: '#323235',
-  info: '#155E92',
-  label: '#787878',
-  danger: '#e63c3c',
-  overlay: 'rgba(161,161,161,0.2)',
-  warning: '#c4bf21',
-  success: '#28ba00',
+export const ToastColors = {
+  Info: '#265de6',
+  Success: '#059f48',
+  Warning: '#f4930c',
+  Error: '#8c3232',
 };

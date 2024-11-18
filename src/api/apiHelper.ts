@@ -1,5 +1,5 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
-import {readOne, SK} from "@utils/storage/mmkvStorage.ts";
+import {readOne, SK} from '@utils/storage/mmkvStorage.ts';
 
 export interface AxiosInstanceResponse<T = any> {
   success: boolean;
@@ -31,8 +31,6 @@ const axiosInstance = async <T = any>(
     config.headers = {...config.headers, Authorization: `Bearer ${token}`};
   }
 
-  // console.log(JSON.stringify(config, null, 2));
-
   try {
     const res: AxiosResponse<T> = await axios(config);
     ans.headers = res.headers;
@@ -56,8 +54,6 @@ const axiosInstance = async <T = any>(
       }
     }
   }
-
-  // console.log(JSON.stringify(ans, null, 2));
 
   return ans;
 };

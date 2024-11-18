@@ -12,15 +12,21 @@ import {
   SK,
   storageKeyValue,
 } from '@utils/storage/mmkvStorage.ts';
-import {ALERT_TYPE, Toast} from 'react-native-alert-notification';
 import {authenticate} from '@api/requests/authenticateHelper.ts';
 import {customTIStyle} from '@theme/TextInputStyles.ts';
 import {useAuth} from '@contexts/AuthContext.tsx';
+import {useDeviceOrientation} from '@react-native-community/hooks';
+import Toast from 'react-native-root-toast';
+import {
+  toastSuccessOptions,
+  toastWarningOptions,
+} from '@utils/notifications/Toast.ts';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'LoginScreen'>;
 
 const LoginScreen: React.FC<Props> = ({}) => {
   const theme = useTheme();
+  const isPortrait = useDeviceOrientation() === 'portrait';
   const textInputStyle = customTIStyle(theme);
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
@@ -36,10 +42,7 @@ const LoginScreen: React.FC<Props> = ({}) => {
       password.trim().length === 0 ||
       (!isLogin && name.trim().length === 0)
     ) {
-      Toast.show({
-        type: ALERT_TYPE.WARNING,
-        textBody: 'Please fill all fields',
-      });
+      Toast.show('Please fill all fields', toastWarningOptions);
       return;
     }
     setProcessing(true);
@@ -47,24 +50,20 @@ const LoginScreen: React.FC<Props> = ({}) => {
       .then(response => {
         if (response) {
           const saved = saveData({
-            name: response.name,
             email: response.email,
             id: response.id,
+            name: response.name,
             token: response.token,
           });
           if (saved) {
             setEmail('');
             setPassword('');
             setName('');
-            Toast.show({
-              type: ALERT_TYPE.SUCCESS,
-              title: isLogin ? 'Login' : 'Registration',
-              textBody: isLogin
-                ? 'Login successful'
-                : 'Registration successful',
-              autoClose: 400,
-            });
             setIsLogged(true);
+            Toast.show(
+              isLogin ? 'Login successful' : 'Registration successful',
+              toastSuccessOptions,
+            );
           }
         }
       })
@@ -87,11 +86,10 @@ const LoginScreen: React.FC<Props> = ({}) => {
         .filter(item => !item.success)
         .map(item => item.key)
         .join(', ');
-      Toast.show({
-        autoClose: 3000,
-        type: ALERT_TYPE.WARNING,
-        textBody: `Failed to save session locally. Missed data: ${missedCred}`,
-      });
+      Toast.show(
+        `Failed to save session locally. Missed data: ${missedCred}`,
+        toastWarningOptions,
+      );
     }
     return !hasUnsaved;
   };

@@ -13,12 +13,15 @@ import TaskModal from '@components/modals/TaskModal.tsx';
 import {useTaskStore} from '@utils/zustand/TaskStates.ts';
 import TaskListComponent from '@components/listItems/TaskListComponent.tsx';
 import {useTaskContainerStore} from '@utils/zustand/TaskContainerStates.ts';
-import {toastShow} from '@utils/notifications/Toast.ts';
-import {ALERT_TYPE} from 'react-native-alert-notification';
 import moment from 'moment/moment';
 import RoundedAnimatedButton from '@components/buttons/RoundedAnimatedButton.tsx';
 import {deleteTask, uploadTask} from '@api/requests/taskHelper.ts';
 import {delay} from '@utils/simpleDalay.ts';
+import Toast from 'react-native-root-toast';
+import {
+  toastSuccessOptions,
+  toastWarningOptions,
+} from '@utils/notifications/Toast.ts';
 
 type Props = NativeStackScreenProps<HomeStackParamList, 'TaskScreen'>;
 
@@ -44,7 +47,7 @@ const TaskScreen: React.FC<Props> = ({route, navigation}) => {
 
   useEffect(() => {
     if (!route.params.isNewTask) setTasks(route.params.data.tasks);
-    const removeListener = navigation.addListener('beforeRemove', e => {
+    const removeListener = navigation.addListener('beforeRemove', _ => {
       setTasks([]);
     });
     return () => {
@@ -64,7 +67,7 @@ const TaskScreen: React.FC<Props> = ({route, navigation}) => {
 
   const onSavePressed = async () => {
     if (title.trim().length === 0) {
-      toastShow('Please enter a title to the task', ALERT_TYPE.WARNING);
+      Toast.show('Please enter a title to the task', toastWarningOptions);
       return;
     }
     const taskContainer = {
@@ -85,13 +88,15 @@ const TaskScreen: React.FC<Props> = ({route, navigation}) => {
       .then(response => {
         if (response) {
           if (route.params.isNewTask) addTaskContainer(taskContainer);
-          else updateTaskContainer(taskContainer);
-          toastShow(
-            !route.params.isNewTask
-              ? 'Task container updated'
-              : 'Added new task container',
-            ALERT_TYPE.SUCCESS,
-          );
+          else {
+            updateTaskContainer(taskContainer);
+            Toast.show(
+              !route.params.isNewTask
+                ? 'Task container updated'
+                : 'Added new task container',
+              toastSuccessOptions,
+            );
+          }
         }
       })
       .finally((): void => setSaveButtonAnimate(false));
@@ -142,7 +147,8 @@ const TaskScreen: React.FC<Props> = ({route, navigation}) => {
         <View style={{flex: 1}} />
         <RoundedIconButton iconName={'arrow-left'} onPress={navigateBack} />
       </View>
-      <ScrollView contentContainerStyle={{gap: Indent.S, padding: Indent.S}}>
+      <ScrollView
+        contentContainerStyle={{gap: Indent.S, paddingHorizontal: Indent.M}}>
         <Text style={[textLabelStyle, {marginHorizontal: Indent.L}]}>
           Title
         </Text>
