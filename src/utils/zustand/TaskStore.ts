@@ -1,5 +1,5 @@
-import {TaskObj} from '@utils/data/TaskTypes.ts';
 import {create} from 'zustand';
+import {TaskObj} from '@utils/data/TaskTypes.ts';
 
 export type TaskStore = {
   tasks: TaskObj[];

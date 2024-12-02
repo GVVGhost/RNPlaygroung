@@ -10,7 +10,7 @@ import {readOne, SK} from '@utils/storage/mmkvStorage.ts';
 import RoundedIconButton from '@components/buttons/RoundedIconButton.tsx';
 import uuid from 'react-native-uuid';
 import moment from 'moment';
-import {useTaskContainerStore} from '@utils/zustand/TaskContainerStates.ts';
+import {useTaskContainerStore} from '@utils/zustand/TaskContainerStore.ts';
 import {getManyTasks} from '@api/requests/taskHelper.ts';
 import {useTheme} from '@react-navigation/native';
 import Toast from 'react-native-root-toast';

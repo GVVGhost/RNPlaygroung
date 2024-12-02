@@ -7,6 +7,7 @@ import {
   FontSize,
   Indent,
 } from '@theme/DimensionValues.ts';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 interface Props {
   text?: string;
@@ -23,11 +24,10 @@ const PrimaryButton: React.FC<Props> = ({
 
   return (
     <View
-      style={{
+      style={[{
         backgroundColor: colors.background,
-        elevation: Elevation.S,
         borderRadius: CornerRadius.M,
-      }}>
+      }, CommonStyles.shadow]}>
       <TouchableOpacity
         onPress={onPress}
         style={[

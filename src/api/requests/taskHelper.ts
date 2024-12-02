@@ -74,7 +74,7 @@ export const deleteTask = async (uuid: string): Promise<string[] | null> => {
   let res = await axiosInstance({
     method: 'DELETE',
     url: '/delete_task',
-    params: {filter: JSON.stringify({uuid})},
+    params: {uuid},
   });
   if (res.status !== HttpStatusCode.Ok) {
     Toast.show(

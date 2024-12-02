@@ -3,10 +3,10 @@ import React from 'react';
 import {useTheme} from '@react-navigation/native';
 import {
   CornerRadius,
-  Elevation,
   FontSize,
   Indent,
 } from '@theme/DimensionValues.ts';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 interface Props {
   text?: string;
@@ -24,16 +24,15 @@ const SecondaryButton: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{
+      style={[{
         flexDirection: 'row',
         borderRadius: CornerRadius.L,
         justifyContent: 'center',
         paddingVertical: Indent.L,
         paddingHorizontal: Indent.XL,
         backgroundColor: theme.colors.card,
-        elevation: Elevation.L,
         flex,
-      }}>
+      }, CommonStyles.shadow]}>
       <Text
         style={{
           fontSize: FontSize.M,

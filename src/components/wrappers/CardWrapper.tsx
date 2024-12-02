@@ -1,7 +1,8 @@
-import {ReactNode} from 'react';
+import React, {ReactNode} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 import {useTheme} from '@react-navigation/native';
-import {CornerRadius, Elevation, Indent} from '@theme/DimensionValues.ts';
+import {CornerRadius, Indent} from '@theme/DimensionValues.ts';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 type Props = {
   children: ReactNode;
@@ -17,8 +18,8 @@ const CardWrapper: React.FC<Props> = ({children, style}) => {
           backgroundColor: colors.card,
           padding: Indent.XL,
           borderRadius: CornerRadius.L,
-          elevation: Elevation.S,
         },
+        CommonStyles.shadow,
         style,
       ]}>
       {children}

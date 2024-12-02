@@ -1,5 +1,6 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import {readOne, SK} from '@utils/storage/mmkvStorage.ts';
+import {Platform} from 'react-native';
 
 export interface AxiosInstanceResponse<T = any> {
   success: boolean;
@@ -19,7 +20,10 @@ const axiosInstance = async <T = any>(
     status: 0,
     headers: null,
   };
-  const baseURL = process.env.API_URL;
+  // const baseURL = process.env.API_URL;
+
+  const baseURL = Platform.OS === 'android' ? 'http://10.0.2.2:4000' : 'http://localhost:4000';
+
   if (!baseURL) {
     ans.message = 'Error. The base API URL is missing';
     return ans;
@@ -30,6 +34,7 @@ const axiosInstance = async <T = any>(
   if (token) {
     config.headers = {...config.headers, Authorization: `Bearer ${token}`};
   }
+  // console.log(config);
 
   try {
     const res: AxiosResponse<T> = await axios(config);

@@ -3,7 +3,6 @@ import {StyleProp, TextStyle} from 'react-native';
 import {
   BorderWidth,
   CornerRadius,
-  Elevation,
   FontSize,
   Indent,
 } from '@theme/DimensionValues.ts';
@@ -12,7 +11,6 @@ export const customTIStyle = (theme: Theme): StyleProp<TextStyle> => ({
   alignItems: 'baseline',
   borderWidth: BorderWidth.L,
   borderRadius: CornerRadius.L,
-  elevation: Elevation.S,
   fontSize: FontSize.M,
   fontWeight: '500',
   paddingHorizontal: Indent.XL,
@@ -32,5 +30,4 @@ export const taskFormTIStyle = (theme: Theme): StyleProp<TextStyle> => ({
   marginHorizontal: Indent.S,
   backgroundColor: theme.colors.card,
   color: theme.colors.text,
-  elevation: Elevation.M,
 });

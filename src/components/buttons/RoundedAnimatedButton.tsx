@@ -8,6 +8,7 @@ import {
   Indent,
 } from '@theme/DimensionValues.ts';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 interface Props {
   iconName?: string;
@@ -25,13 +26,12 @@ const RoundedAnimatedButton: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{
+      style={[{
         backgroundColor: colors.primary,
         borderRadius: CornerRadius.XL,
         padding: Indent.L,
-        elevation: Elevation.S,
         margin: Indent.XS,
-      }}>
+      }, CommonStyles.shadow]}>
       {isAnimated ? (
         <ActivityIndicator
           animating={isAnimated}

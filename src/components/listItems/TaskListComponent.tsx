@@ -2,7 +2,6 @@ import React, {memo} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {
   CornerRadius,
-  Elevation,
   FontSize,
   IconSize,
   Indent,
@@ -11,6 +10,7 @@ import {useTheme} from '@react-navigation/native';
 import {TaskObj} from '@utils/data/TaskTypes.ts';
 import RoundedIconButton from '@components/buttons/RoundedIconButton.tsx';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 export interface TaskListComponentProps {
   item: TaskObj;
@@ -35,13 +35,15 @@ const TaskListComponent: React.FC<TaskListComponentProps> = memo(
         }}>
         <TouchableOpacity
           onPress={onToggle}
-          style={{
-            backgroundColor: colors.card,
-            padding: Indent.M,
-            borderRadius: CornerRadius.L,
-            elevation: Elevation.S,
-            minWidth: 34,
-          }}>
+          style={[
+            {
+              backgroundColor: colors.card,
+              padding: Indent.M,
+              borderRadius: CornerRadius.L,
+              minWidth: 34,
+            },
+            CommonStyles.shadow,
+          ]}>
           {item.isComplete && (
             <View
               style={{

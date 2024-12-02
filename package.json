@@ -32,6 +32,7 @@
     "react-native-uuid": "^2.0.2",
     "react-native-vector-icons": "^10.2.0",
     "react-native-version-info": "^1.1.1",
+    "socket.io-client": "^4.8.1",
     "use-debounce": "^10.0.4",
     "zustand": "^5.0.1"
   },

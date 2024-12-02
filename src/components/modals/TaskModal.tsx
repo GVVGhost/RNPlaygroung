@@ -5,7 +5,7 @@ import {Indent} from '@theme/DimensionValues.ts';
 import {useTheme} from '@react-navigation/native';
 import {taskFormTIStyle} from '@theme/TextInputStyles.ts';
 import {labelTextStyle} from '@theme/TextStyles.ts';
-import {useTaskStore} from '@utils/zustand/TaskStates.ts';
+import {useTaskStore} from '@utils/zustand/TaskStore.ts';
 import SlideModal from '@components/modals/SlideModal.tsx';
 import SecondaryButton from '@components/buttons/SecondaryButton.tsx';
 import Toast from 'react-native-root-toast';

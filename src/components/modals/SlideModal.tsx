@@ -1,13 +1,9 @@
 import React from 'react';
 import {Modal, ScrollView, TouchableWithoutFeedback, View} from 'react-native';
-import {
-  BorderWidth,
-  CornerRadius,
-  Elevation,
-  Indent,
-} from '@theme/DimensionValues.ts';
+import {BorderWidth, CornerRadius, Indent} from '@theme/DimensionValues.ts';
 import {useTheme} from '@react-navigation/native';
 import SecondaryButton from '@components/buttons/SecondaryButton.tsx';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 interface SlideModalProps {
   visible: boolean;
@@ -35,16 +31,18 @@ const SlideModal: React.FC<SlideModalProps> = ({
           <View style={{flex: 1}} />
         </TouchableWithoutFeedback>
         <ScrollView
-          contentContainerStyle={{
-            backgroundColor: colors.background,
-            borderColor: colors.border,
-            borderTopEndRadius: CornerRadius.XL,
-            borderTopStartRadius: CornerRadius.XL,
-            borderWidth: BorderWidth.L,
-            elevation: Elevation.S,
-            flex: 1,
-            paddingBottom: '20%',
-          }}>
+          contentContainerStyle={[
+            {
+              backgroundColor: colors.background,
+              borderColor: colors.border,
+              borderTopEndRadius: CornerRadius.XL,
+              borderTopStartRadius: CornerRadius.XL,
+              borderWidth: BorderWidth.L,
+              flex: 1,
+              paddingBottom: '20%',
+            },
+            CommonStyles.shadow,
+          ]}>
           <View
             style={{
               flexDirection: 'row',

@@ -1,20 +1,12 @@
 import {StyleSheet} from 'react-native';
-import {
-  BorderWidth,
-  CornerRadius,
-  Elevation,
-  FontSize,
-  Indent,
-} from '@theme/DimensionValues.ts';
+import {Elevation} from '@theme/DimensionValues.ts';
 
-export const TextInputStyles = StyleSheet.create({
-  container: {
-    alignItems: 'baseline',
-    borderWidth: BorderWidth.L,
-    borderRadius: CornerRadius.L,
+export const CommonStyles = StyleSheet.create({
+  shadow: {
     elevation: Elevation.S,
-    fontSize: FontSize.L,
-    fontWeight: '400',
-    padding: Indent.M,
+    shadowOffset: {width: Elevation.S, height: Elevation.S},
+    shadowColor: 'black',
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
   },
 });

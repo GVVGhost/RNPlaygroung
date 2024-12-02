@@ -21,13 +21,14 @@ import {
   toastSuccessOptions,
   toastWarningOptions,
 } from '@utils/notifications/Toast.ts';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 type Props = NativeStackScreenProps<AuthStackParamList, 'LoginScreen'>;
 
 const LoginScreen: React.FC<Props> = ({}) => {
   const theme = useTheme();
   const isPortrait = useDeviceOrientation() === 'portrait';
-  const textInputStyle = customTIStyle(theme);
+  const textInputStyle = [customTIStyle(theme), CommonStyles.shadow];
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');

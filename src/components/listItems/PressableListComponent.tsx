@@ -3,12 +3,12 @@ import {Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {
   CornerRadius,
-  Elevation,
   FontSize,
   IconSize,
   Indent,
 } from '@theme/DimensionValues.ts';
 import {useTheme} from '@react-navigation/native';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 export interface PressableListComponentProps {
   label?: string;
@@ -30,14 +30,16 @@ const PressableListComponent: React.FC<PressableListComponentProps> = memo(
 
     return (
       <View
-        style={{
-          paddingHorizontal: Indent.L,
-          paddingVertical: Indent.XL,
-          backgroundColor: colors.card,
-          borderRadius: CornerRadius.M,
-          gap: Indent.L,
-          elevation: Elevation.S,
-        }}>
+        style={[
+          {
+            paddingHorizontal: Indent.L,
+            paddingVertical: Indent.XL,
+            backgroundColor: colors.card,
+            borderRadius: CornerRadius.M,
+            gap: Indent.L,
+          },
+          CommonStyles.shadow,
+        ]}>
         <TouchableOpacity disabled={!handler} onPress={onPress}>
           <View style={{flexDirection: 'row'}}>
             <View style={{flex: 1, flexDirection: 'row', gap: Indent.L}}>

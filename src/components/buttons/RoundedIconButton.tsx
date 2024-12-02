@@ -3,11 +3,11 @@ import React from 'react';
 import {useTheme} from '@react-navigation/native';
 import {
   CornerRadius,
-  Elevation,
   IconSize,
   Indent,
 } from '@theme/DimensionValues.ts';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {CommonStyles} from '@theme/CommonStyles.ts';
 
 interface Props {
   iconName?: string;
@@ -23,13 +23,12 @@ const RoundedIconButton: React.FC<Props> = ({
   return (
     <TouchableOpacity
       onPress={onPress}
-      style={{
+      style={[{
         backgroundColor: colors.primary,
         borderRadius: CornerRadius.XL,
         padding: Indent.L,
-        elevation: Elevation.S,
         margin: Indent.XS,
-      }}>
+      }, CommonStyles.shadow]}>
       <Icon name={iconName} size={IconSize.S} color={colors.background} />
     </TouchableOpacity>
   );

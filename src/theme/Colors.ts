@@ -23,7 +23,7 @@ export const DarkTheme: Theme = {
   colors: {
     primary: '#855022',
     background: '#171616',
-    card: '#1b1a1a',
+    card: '#1f1f1e',
     text: '#817572',
     border: '#252322',
     notification: '#783c3c',
